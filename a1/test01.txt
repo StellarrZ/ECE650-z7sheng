@@ -1,0 +1,56 @@
+add "Weber Street" (2,-1) (2,2) (5,5) (5,6) (3,8)
+add "King Street S" (4,2) (4,8)
+add "Davenport Road" (1,4) (5,8)
+gg
+rm "Weber street"    
+gg
+add   "Weber Street"    (2,-1) (2,2)(5,5) (5,6)(3,8)  
+gg
+mod "DaVenport road" (1,4) (5,8)(-1,8)(  
+mod "DaVenport road" (1,4) (5,8,)(-1,8)  
+mod "DaVenport road" (1,4) (5,8)(-1,8)
+gg
+mod "davenport road" (1,4) (5,8)(-1,7)
+gg
+mod "King Street S" (2,2)(2,3)(4,2) (4,8)
+gg
+  rm    "KING STREET S"   
+rm"Davenport Road"
+rm "Davenport Road" (1,4)
+rm "Davenport  Road"
+rm "Davenport Road"
+gg
+add "idk" (10,10) (10,5) (5,5)
+gg
+mod "idk" (5,-195)(5,100)
+gg
+mod "idk" (2,0) (2,1)
+gg
+mod "idk" (2,-5) (2,1)
+gg
+mod "idk" (2,-5) (2,11)
+gg
+mod "idk" (2,-5) (2,1)(2,11)
+gg
+mod "idk" (2,-5) (2,1)(2,2)
+gg
+rm                     "Weber street" 
+add "King Street S" (4,2) (4,8)
+add "King            S" (0,1)(4,1) (4,567489)
+gg
+mod "idk" (-5555,-5555)(0,-0)
+gg
+add "lol" (-156794,0) (5,-463)
+gg
+rm "lol"
+rm "idk"
+rm "King            S"
+add "King Street S"   
+add "King Street S" (1,1)
+gg
+rm "King Street S"
+gg
+add "Weber Street" (2,-1) (2,2) (5,5) (5,6) (3,8)
+add "A" (2,0) (1,6) (2,7) (5,7)
+gg
+  gg (4,9) 
