@@ -359,10 +359,8 @@ def judgeInsrt(pa, pb, pc, pd):
 
 
 def geneGraph():
-    global vers, edges, agent, stts
+    global agent, stts
     global ii, jj, mm, nn
-    vers = {}
-    edges = {}
     agent = copy.deepcopy(dbase)
 
     stts = list(agent)
