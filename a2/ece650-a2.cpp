@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
         std::getline(std::cin, line);
 
         // if nothing was read, go to top of the while to check for eof
-        if (line.size() == 0)
+        if (line.empty())
             continue;
 
         // create an input stream based on the line
@@ -49,8 +49,9 @@ int main(int argc, char** argv) {
         if (ch == cmd_1) {
             input >> v;
 
-            if (v < 2) 
+            if (v < 2) {
                 std::cerr << "Error: V should be greater than 1" << std::endl;
+            }
             // initialize adjacency matrix
             // we simply suppose that v cannot be too large
             else {
@@ -92,10 +93,11 @@ int main(int argc, char** argv) {
             int sour, des;
             input >> sour;
             input >> des;
-            if (sour <= 0 || des <= 0 || sour > v || des > v) 
+            if (sour <= 0 || des <= 0 || sour > v || des > v) {
                 std::cerr << "Error: Vertex(es) out of range" << std::endl;
+            }
             else {
-                int *stack = new int [v + 1] ();
+                auto *stack = new int [v + 1] ();
                 int top = 0;
 
                 // do Bellman-Ford and output
@@ -105,15 +107,16 @@ int main(int argc, char** argv) {
                         std::cout << "-" << stack[top];
                     std::cout << std::endl;
                 }
-                else
+                else {
                     std::cerr << "Error: Path does not exist between them" << std::endl;
-                
-                // destroy the stack
+                }
+
                 delete[] stack;
             }
         }
-        else 
+        else {
             std::cerr << "Error: Wrong command" << std::endl;
+        }
     }
 
     return 0;

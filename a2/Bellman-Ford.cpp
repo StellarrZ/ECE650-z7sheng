@@ -37,13 +37,12 @@ bool process (bool **matrix, int v, int sour, int des,
     if (node[des - 1].dis() < max_value) {
         k = des;
         stack[0] = des;
-        while (node[k - 1].pre()) {
+        while (node[k - 1].pre() != 0) {
             k = node[k - 1].pre();
             stack[++top] = k;
         }
         return true;
     }
     // unreachable
-    else 
-        return false;
+    return false;
 }
