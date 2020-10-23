@@ -116,10 +116,5 @@ int main(int argc, char** argv) {
             std::cerr << "Error: Wrong command" << std::endl;
     }
 
-    // destroy old adjacency matrix
-    for (i = 0; i < v; i++) 
-        delete[] matrix[i];
-    delete[] matrix;
-
     return 0;
 }
