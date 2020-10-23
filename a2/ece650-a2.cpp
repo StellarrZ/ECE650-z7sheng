@@ -1,76 +1,125 @@
 // Compile with c++ ece650-a2cpp -std=c++11 -o ece650-a2
 #include <iostream>
 #include <sstream>
-#include <vector>
+
+#include "a2.hpp"
 
 int main(int argc, char** argv) {
-    // Test code. Replaced with your code
 
-    // Print command line arguments that were used to start the program
-    std::cout << "Called with " << argc << " arguments\n";
-    for (int i = 0; i < argc; ++i)
-        std::cout << "Arg " << i << " is " << argv[i] << "\n";
+    // sign character and commands
+    const char angle = '<';
+    const char cmd_1 = 'V';
+    const char cmd_2 = 'E';
+    const char cmd_3 = 's';
 
-    // separator character
-    const char comma = ',';
+    int i, j = 0;
+
+    int v = 0;
+    bool **matrix;
 
     // read from stdin until EOF
     while (!std::cin.eof()) {
-        // print a promt
-        std::cout << "Enter numbers separated by comma: ";
 
         // read a line of input until EOL and store in a string
         std::string line;
         std::getline(std::cin, line);
 
+        // if nothing was read, go to top of the while to check for eof
+        if (line.size() == 0)
+            continue;
+
         // create an input stream based on the line
         // we will use the input stream to parse the line
         std::istringstream input(line);
+        
+        // ignore empty lines
+        std::ws(input);
+        if (input.eof())
+            continue;
 
-        // we expect each line to contain a list of numbers
-        // this vector will store the numbers.
-        // they are assumed to be unsigned (i.e., positive)
-        std::vector<unsigned> nums;
+        char ch;
+        input >> ch;
+        // just in case
+        if (input.fail()) {
+            std::cerr << "Error: Failed to read input" << std::endl;
+            continue;
+        }
+        
+        // input_line: V v
+        if (ch == cmd_1) {
+            input >> v;
 
-        // while there are characters in the input line
-        while (!input.eof()) {
-            unsigned num;
-            // parse an integer
-            input >> num;
-            if (input.fail()) {
-                std::cerr << "Error parsing a number\n";
-                break;
-            }
-            else
-                nums.push_back(num);
-
-            // if eof bail out
-            if (input.eof())
-                break;
-
-            // read a character
-            // Note that whitespace is ignored
-            char separator;
-            input >> separator;
-
-            // if error parsing, or if the character is not a comma
-            if (input.fail() || separator != comma) {
-                std::cerr << "Error parsing separator\n";
-                break;
+            if (v < 2) 
+                std::cerr << "Error: V should be greater than 1" << std::endl;
+            // initialize adjacency matrix
+            // we simply suppose that v cannot be too large
+            else {
+                matrix = new bool *[v];
+                for (j = 0; j < v; j++)
+                    matrix[j] = new bool[v];
+                for (i = 0; i < v; i++)
+                    for (j = 0; j < v; j++) 
+                        matrix[i][j] = false;
             }
         }
+        // input_line: E {<stem,dtem>,<>}
+        else if (ch == cmd_2) {
+            std::ws(input);
+            int stem, dtem = 0;
+            while (!input.eof()) {
+                input >> ch;
+                
+                // set the adjacency matrix
+                if (ch == angle) {
+                    input >> stem;
+                    input >> ch;
+                    input >> dtem;
 
-        // done parsing a line, print the numbers
-        if (!nums.empty()) {
-            std::cout << "\nYou have entered " << nums.size() << " numbers: ";
-            size_t i = 0;
-            for (unsigned x : nums) {
-                std::cout << x;
-                // print a comma if not the last number
-                i++;
-                if (i < nums.size()) std::cout << ",";
+                    // test whether input edge is out of range
+                    if (stem <= 0 || dtem <= 0 || stem > v || dtem > v) {
+                        std::cerr << "Error: Wrong vertex(es) included" << std::endl;
+                        break;
+                    }
+
+                    // undirected graph
+                    matrix[stem - 1][dtem - 1] = true;
+                    matrix[dtem - 1][stem - 1] = true;
+                }
             }
         }
-        std::cout << std::endl;
+        // input_line: s sour des
+        else if (ch == cmd_3) {
+            int sour, des;
+            input >> sour;
+            input >> des;
+            if (sour <= 0 || des <= 0 || sour > v || des > v) 
+                std::cerr << "Error: Vertex(es) out of range" << std::endl;
+            else {
+                int *stack = new int [v + 1] ();
+                int top = 0;
+
+                // do Bellman-Ford and output
+                if (process(matrix, v, sour, des, stack, top)) {
+                    std::cout << stack[top--];
+                    for (; top >= 0; top--) 
+                        std::cout << "-" << stack[top];
+                    std::cout << std::endl;
+                }
+                else
+                    std::cerr << "Error: Path does not exist between them" << std::endl;
+                
+                // destroy the stack
+                delete[] stack;
+            }
+        }
+        else 
+            std::cerr << "Error: Wrong command" << std::endl;
     }
+
+    // destroy old adjacency matrix
+    for (i = 0; i < v; i++) 
+        delete[] matrix[i];
+    delete[] matrix;
+
+    return 0;
 }
