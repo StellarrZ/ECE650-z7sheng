@@ -1,0 +1,105 @@
+Question 1 (50 points) 
+Saved
+Simple YAML
+Simple YAML (SYAML) is a simplified subset of the YAML language. (You are allowed to access the YAML specification website for examples. However, remember that SYAML is different from YAML so not all examples will apply.)
+
+SYAML is used to represent nested structures: lists of strings, dictionaries of strings, lists of dictionaries, and dictionaries of lists. Real YAML allows arbitrary nesting, but SYAML does not.
+
+An SYAML document begins with a single line containing triple dashes --- and ends with a single line containing triple dots .... A list entry is denoted by a dash - followed by a space followed by the list entry.
+
+For example, the following document is a list with three string elements.
+
+---
+- one
+- two
+- three
+...
+It is equivalent to the following Python code
+
+['one', 'two', 'three']
+Unlike in YAML, in SYAML string literals are not quoted, and neither double, " or single ' quote, or a dash - , a colon :, or a new line \n are not allowed in strings. For example, the following is NOT allowed
+
+---
+- "one"
+- 'two'
+- three
+...
+A dictionary entry is denoted by a string literal for the key, followed by a colon :, followed by a space and a value. For example, the following document represents a dictionary with three entries:
+
+---
+one: un
+two: deux
+three: trois
+...
+It is equivalent to the following Python expression:
+
+{'one' : 'un', 'two': 'deux', 'three' : 'trois'}
+List and dictionaries can be nested (but, remember, only one level deep).
+
+An example of a list containing a dictionary is given below:
+
+---
+- one : un
+  two : deux
+- one : uno
+  two : dos 
+...
+The corresponding Python literal is
+
+[
+  {
+    "one": "un",
+    "two": "deux"
+  },
+  {
+    "one": "uno",
+    "two": "dos"
+  }
+]
+Here is an example of a dictionary containing a list
+
+---
+one:
+     - un
+     - uno
+two:
+     - deux
+     - dos
+...
+Note that a list starts on a new line. The indentation is not important.
+
+The corresponding Python literal is
+
+{
+    "one": [
+        "un",
+        "uno"
+    ],
+    "two": [
+        "deux",
+        "dos"
+    ]
+}
+In this question, you have to implement a printer and a parser for SYAML. Start with the printer, and then continue to the parser. The features are described based on their difficulty. Use your time appropriately. We will test your implementation and your grade will depend on the number of supported features.
+
+Both your printer and your parser must reject illegal input with an error.
+
+A skeleton for the code is provided in the skeleton repository under directory t1.5. Make sure to follow the instructions in the skeleton file exactly.
+
+Your code must be submitted to the GitLab repository and a copy of it must be pasted to LEARN by the deadline.
+
+You are allowed to access Python documentation during the test either via your IDE or via the web browser. The documentation is available here.
+
+Part 1
+Create a function print_syaml(data) that prints data in SYAML format (if possible), and throws an exception if it is not (for example, data is not a list or a dictionary)
+
+You can use isinstance(data, dict), isinstance(data, list), isinstance(data, str) to check that data is a dictionary, a list, or a string, respectively.
+
+The template of print_syaml is provided in the skeleton on GitLab.
+
+Part 2
+Create a function parse_syaml(lines) that takes a list of strings and returns a corresponding SYAML document, or throws an exception if this is not possible.
+
+The template for parse_syaml is provided in the skeleton on GitLab.
+
+Note that the input to the function is a list of strings, similar to what you would get by reading a file using Python readlines method.
