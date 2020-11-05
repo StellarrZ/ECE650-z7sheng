@@ -55,7 +55,7 @@ def print_syaml(data):
             for ele in data:
                 if isinstance(ele, dict):
                     bar = {False: "- ", True: "  "}
-                    for i, key in ele:
+                    for i, key in enumerate(ele):
                         quark = ele[key]
                         if test_string(quark):
                             print(bar[i > 0] + key + " : " + quark)
@@ -119,7 +119,7 @@ def parse_syaml(lines):
                     doc.append(baby)
             else:
                 for lx in lines:
-                    doc.append( lx.strip("\n").strlip("- ") )
+                    doc.append( lx.strip("\n").lstrip("- ") )
         else:
             if inner:
                 baby = []
