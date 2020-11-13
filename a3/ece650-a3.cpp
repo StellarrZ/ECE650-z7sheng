@@ -67,7 +67,7 @@ int main (int argc, char **argv) {
         close(p2[1]);
 
         char *arga1[3];
-        arga1[0] = (char *)"python3";
+        arga1[0] = (char *)"usr/bin/python3";
         arga1[1] = (char *)"../ece650-a1.py";
         arga1[2] = nullptr;
         execv("python3", arga1);
