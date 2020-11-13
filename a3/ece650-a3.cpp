@@ -66,18 +66,18 @@ int main (int argc, char **argv) {
         close(p2[0]);
         close(p2[1]);
 
-        // char *arga1[3];
-        // arga1[0] = (char *)"python";
-        // arga1[1] = (char *)"./ece650-a1.py";
-        // arga1[2] = nullptr;
-        // execv("usr/bin/python3", arga1);
+        char *arga1[3];
+        arga1[0] = (char *)"python3";
+        arga1[1] = (char *)"ece650-a1.py";
+        arga1[2] = nullptr;
+        execv("usr/bin/python3", arga1);
 
-        // std::cerr << "Error: Fail to execute ece650-a1" << std::endl;
-        // return 1;
+        std::cerr << "Error: Fail to execute ece650-a1" << std::endl;
+        return 1;
 
-        std::system("python3 ../ece650-a1.py");
+        // std::system("python3 ../ece650-a1.py");
 
-        return 0;
+        // return 0;
     }
     else if (child < 0) {
         std::cerr << "Error: Could not fork" << std::endl;
