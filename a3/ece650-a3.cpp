@@ -36,7 +36,7 @@ int main (int argc, char **argv) {
     child = fork();
     if (child == 0) {
         // rgen
-        dup2(p1[1], STDIN_FILENO);
+        dup2(p1[1], STDOUT_FILENO);
         close(p1[0]);
         close(p1[1]);
 
