@@ -144,9 +144,10 @@ int main (int argc, char **argv) {
     waitpid(kids.front(), &status, 0);
     
     // kill(0, SIGTERM);
-    for (pid_t k : kids)
+    for (pid_t k : kids) {
         kill(-k, SIGTERM);
         waitpid(k, &status, 0);
+    }
     
     return 0;
 }
