@@ -49,8 +49,10 @@ int main(int argc, char** argv) {
         if (ch == cmd_1) {
             input >> v;
 
-            if (v < 2) {
+            if (v == 0) {}
+            else if (v < 2) {
                 std::cerr << "Error: V should be greater than 1" << std::endl;
+                continue;
             }
             // initialize adjacency matrix
             // we simply suppose that v cannot be too large
@@ -62,13 +64,20 @@ int main(int argc, char** argv) {
                     for (j = 0; j < v; j++) 
                         matrix[i][j] = false;
             }
+
+            // print V v
+            std::cout << "V " << v << std::endl;
         }
         // input_line: E {<stem,dtem>,<>}
         else if (ch == cmd_2) {
+            // print E
+            std::cout << "E ";
+
             std::ws(input);
             int stem, dtem = 0;
             while (!input.eof()) {
                 input >> ch;
+                std::cout << ch;
                 
                 // set the adjacency matrix
                 if (ch == angle) {
@@ -85,8 +94,14 @@ int main(int argc, char** argv) {
                     // undirected graph
                     matrix[stem - 1][dtem - 1] = true;
                     matrix[dtem - 1][stem - 1] = true;
+
+                    // print stem,dtem
+                    // if "Error: Wrong vertex(es) included" in the future,
+                    // then we already messed up
+                    std::cout << stem << ch << dtem;
                 }
             }
+            std::cout << std::endl;
         }
         // input_line: s sour des
         else if (ch == cmd_3) {

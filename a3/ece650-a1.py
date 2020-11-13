@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-
-if __name__ == '__main__':
-    print 'Replace with your solution for Assignment 1'
 # !/usr/bin/env python3
 import sys
 import copy
@@ -406,33 +402,33 @@ def geneVE():
     return
 
 
+# being adapted to Assignment 3
 def outVE():
-    outsv = set( [] )
+    sv = set()
+    nickname = {}
+    cnt = 0
     for travel in agent:
-        for i in range( len( agent[ travel ] ) ):
-            if agent[ travel ][i].vflag:
-                otem = "  " + agent[ travel ][i].handnum() + ":\t\t" + repr( agent[ travel ][i] )
-                outsv.add(otem)
-    print("V = {")
-    for onow in outsv:
-        print(onow)
-    print("}")
+        for ver in agent[travel]:
+            if ver.vflag and ver.handnum() not in sv:
+                sv.add(ver.handnum())
+                cnt += 1
+                nickname[ver.handnum()] = cnt
 
-    outse = set( [] )
+    print("V " + str(cnt))
+
+    se = set()
+    oeline = ""
     for travel in agent:
-        for i in range( len( agent[ travel ] ) - 1 ):
-            if agent[ travel ][i].starflag or agent[ travel ][i + 1].starflag:
-                otem = "  <" + agent[ travel ][i].handnum() + "," + agent[ travel ][i + 1].handnum() + ">,"
-                outse.add(otem)
-    print("E = {")
-    osep = list( outse )
-    if len(osep) != 0:
-        for onow in range( len(osep) - 1 ):
-            print( osep[onow] )
-        onow = osep[-1]
-        onow = onow.rstrip(",")
-        print(onow)
-    print("}")
+        for i, ver in enumerate(agent[travel][:-1]):
+            if ver.starflag or agent[travel][i + 1].starflag:
+                nn1 = nickname[ver.handnum()]
+                nn2 = nickname[agent[travel][i + 1].handnum()]
+                if (nn1, nn2) not in se and (nn2, nn1) not in se:
+                    se.add((nn1, nn2))
+                    oeline += "<" + str(nn1) + "," + str(nn2) + ">,"
+    oeline = oeline.rstrip(",")
+
+    print("E {" + oeline + "}")
     return
     
 
