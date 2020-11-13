@@ -3,7 +3,7 @@ project(ece650-a3)
 
 ## ECE650 Specific configuration start here
 ## Project specific configurations go here
-CONFIGURE_FILE(${PATH_TO_SOURCE}/ece650-a1.py ${PATH_TO_BUILD}/ece650-a1.py COPYONLY)
+CONFIGURE_FILE(ece650-a1.py ece650-a1.py COPYONLY)
 
 # enable c++11 support
 set (CMAKE_CXX_FLAGS "-std=c++11 -Wall ${CMAKE_CXX_FLAGS}")
