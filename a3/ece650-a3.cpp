@@ -58,8 +58,8 @@ int main (int argc, char **argv) {
     child = fork();
     if (child == 0) {
         // ece650-a2
-        // close(p1[0]);
-        // close(p1[1]);
+        close(p1[0]);
+        close(p1[1]);
 
         dup2(p2[0], STDIN_FILENO);
         // close(p2[0]);
