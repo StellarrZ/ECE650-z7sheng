@@ -123,8 +123,7 @@ int main (int argc, char **argv) {
         // killing spree
         for (pid_t k : kids) {
             int status;
-            // kill(k, SIGTERM);
-            kill(k, SIGKILL);
+            kill(k, SIGTERM);
             waitpid(k, &status, 0);
         }
 
@@ -145,8 +144,8 @@ int main (int argc, char **argv) {
     waitpid(kids.front(), &status, 0);
     
     // kill(0, SIGTERM);
-    kill(0, SIGKILL);
     for (pid_t k : kids)
+        kill(-k, SIGTERM);
         waitpid(k, &status, 0);
     
     return 0;
