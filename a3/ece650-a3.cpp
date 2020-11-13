@@ -121,7 +121,6 @@ int main (int argc, char **argv) {
         int res = sfind();
 
         // killing spree
-        int status;
         kill(kids.front(), SIGTERM);
 
         // // killing spree
@@ -148,12 +147,12 @@ int main (int argc, char **argv) {
     int status;
     waitpid(kids.front(), &status, 0);
     
-    // // kill(0, SIGTERM);
-    // for (pid_t k : kids) {
-    //     kill(k, SIGTERM);
-    //     // std::cerr << "mom  " << k << std::endl;
-    //     waitpid(k, &status, 0);
-    // }
+    // kill(0, SIGTERM);
+    for (pid_t k : kids) {
+        kill(k, SIGTERM);
+        // std::cerr << "mom  " << k << std::endl;
+        // waitpid(k, &status, 0);
+    }
     
     return 0;
 }

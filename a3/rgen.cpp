@@ -8,6 +8,6 @@ int main (int argc, char **argv) {
               << "add \"One Infinite Loop\" (2,4)(3,6)(6,6)(8,4)\n"
               << "gg"
               << std::endl;
-    sleep(45);
+    sleep(15);
     return 0;
 }
