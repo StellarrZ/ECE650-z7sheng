@@ -144,7 +144,8 @@ int main (int argc, char **argv) {
     int status;
     waitpid(kids.front(), &status, 0);
     
-    kill(0, SIGTERM);
+    // kill(0, SIGTERM);
+    kill(0, SIGKILL);
     for (pid_t k : kids)
         waitpid(k, &status, 0);
     
