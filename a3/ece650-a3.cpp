@@ -86,8 +86,8 @@ int main (int argc, char **argv) {
 
     kids.push_back(child);
 
-    close(p1[0]);
-    close(p1[1]);
+    // close(p1[0]);
+    // close(p1[1]);
 
     child = fork();
     if (child == 0) {
