@@ -77,7 +77,8 @@ int main(int argc, char** argv) {
             int stem, dtem = 0;
             while (!input.eof()) {
                 input >> ch;
-                std::cout << ch;
+                if (ch != '}')
+                    std::cout << ch;
                 
                 // set the adjacency matrix
                 if (ch == angle) {
@@ -101,7 +102,7 @@ int main(int argc, char** argv) {
                     std::cout << stem << ch << dtem;
                 }
             }
-            std::cout << std::endl;
+            std::cout << "}" << std::endl;
         }
         // input_line: s sour des
         else if (ch == cmd_3) {
