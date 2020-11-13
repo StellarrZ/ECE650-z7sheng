@@ -147,12 +147,12 @@ int main (int argc, char **argv) {
     int status;
     waitpid(kids.front(), &status, 0);
     
-    kill(0, SIGTERM);
-    // for (pid_t k : kids) {
-    //     kill(k, SIGTERM);
-    //     // std::cerr << "mom  " << k << std::endl;
-    //     // waitpid(k, &status, 0);
-    // }
+    // kill(0, SIGTERM);
+    for (pid_t k : kids) {
+        kill(k, SIGTERM);
+        // std::cerr << "mom  " << k << std::endl;
+        waitpid(k, &status, 0);
+    }
     
     return 0;
 }
