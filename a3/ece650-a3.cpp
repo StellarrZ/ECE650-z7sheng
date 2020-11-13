@@ -57,6 +57,31 @@ int main (int argc, char **argv) {
 
     child = fork();
     if (child == 0) {
+        // ece650-a2
+        close(p1[0]);
+        close(p1[1]);
+        
+        dup2(p2[0], STDIN_FILENO);
+        close(p2[0]);
+        close(p2[1]);
+
+        char *arga2[2];
+        arga2[0] = (char *)"ece650-a2";
+        arga2[1] = nullptr;
+        execv("./ece650-a2", arga2);
+
+        std::cerr << "Error: Fail to execute ece650-a2" << std::endl;
+        return 1;
+    }
+    else if (child < 0) {
+        std::cerr << "Error: Could not fork" << std::endl;
+        return 1;
+    }
+
+    kids.push_back(child);
+
+    child = fork();
+    if (child == 0) {
         // ece650-a1
         dup2(p1[0], STDIN_FILENO);
         close(p1[0]);
@@ -88,28 +113,6 @@ int main (int argc, char **argv) {
 
     close(p1[0]);
     close(p1[1]);
-
-    child = fork();
-    if (child == 0) {
-        // ece650-a2
-        dup2(p2[0], STDIN_FILENO);
-        close(p2[0]);
-        close(p2[1]);
-
-        char *arga2[2];
-        arga2[0] = (char *)"ece650-a2";
-        arga2[1] = nullptr;
-        execv("./ece650-a2", arga2);
-
-        std::cerr << "Error: Fail to execute ece650-a2" << std::endl;
-        return 1;
-    }
-    else if (child < 0) {
-        std::cerr << "Error: Could not fork" << std::endl;
-        return 1;
-    }
-
-    kids.push_back(child);
 
     child = fork();
     if (child == 0) {
