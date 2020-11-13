@@ -124,6 +124,7 @@ int main (int argc, char **argv) {
         for (pid_t k : kids) {
             int status;
             kill(k, SIGTERM);
+            std::cerr << "son  " << k << std::endl;
             waitpid(k, &status, 0);
         }
 
@@ -146,6 +147,7 @@ int main (int argc, char **argv) {
     // kill(0, SIGTERM);
     for (pid_t k : kids) {
         kill(-k, SIGTERM);
+        std::cerr << "mom  " << k << std::endl;
         waitpid(k, &status, 0);
     }
     
