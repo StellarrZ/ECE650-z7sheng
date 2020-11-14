@@ -87,9 +87,9 @@ int main (int argc, char **argv) {
         close(p1[0]);
         close(p1[1]);
 
-        // dup2(p2[1], STDOUT_FILENO);
-        // close(p2[0]);
-        // close(p2[1]);
+        dup2(p2[1], STDOUT_FILENO);
+        close(p2[0]);
+        close(p2[1]);
 
         // return sfind();
 
@@ -131,7 +131,7 @@ int main (int argc, char **argv) {
 
         int res = sfind();
 
-        // killing spree
+        // kill rgen
         kill(kids.front(), SIGTERM);
 
         // // killing spree
@@ -158,6 +158,7 @@ int main (int argc, char **argv) {
     int status;
     waitpid(kids.front(), &status, 0);
     
+    // // kiling spree
     // kill(0, SIGTERM);
     for (pid_t k : kids) {
         kill(k, SIGTERM);
