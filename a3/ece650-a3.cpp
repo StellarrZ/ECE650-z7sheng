@@ -26,11 +26,6 @@ int main (int argc, char **argv) {
 
     int p1[2];
     pipe(p1);
-    
-    // // arg here ##################
-    // char *argrg[2];
-    // argrg[0] = (char *)"rgen";
-    // argrg[1] = nullptr;
 
     pid_t child;
     child = fork();
@@ -99,14 +94,6 @@ int main (int argc, char **argv) {
         close(p2[0]);
         close(p2[1]);
 
-        // return sfind();
-
-        // std::cout << "V 0\nE {}" << std::endl;
-        // sleep(2);
-        // std::cout << "V 3\nE {<1,2>,<2,3>}" << std::endl;
-        // sleep(11);
-        // return 0;
-
         char *arga1[3];
         arga1[0] = (char *)"python3";
         arga1[1] = (char *)"./ece650-a1.py";
@@ -115,10 +102,6 @@ int main (int argc, char **argv) {
 
         std::cerr << "Error: Fail to execute ece650-a1" << std::endl;
         return 1;
-
-        // std::system("python3 ../ece650-a1.py");
-
-        // return 0;
     }
     else if (child < 0) {
         std::cerr << "Error: Could not fork" << std::endl;
@@ -142,14 +125,6 @@ int main (int argc, char **argv) {
         // kill rgen
         kill(kids.front(), SIGTERM);
 
-        // // killing spree
-        // for (pid_t k : kids) {
-        //     int status;
-        //     kill(k, SIGTERM);
-        //     // std::cerr << "son  " << k << std::endl;
-        //     waitpid(k, &status, 0);
-        // }
-
         return res;
     }
     else if (child < 0) {
@@ -167,10 +142,8 @@ int main (int argc, char **argv) {
     waitpid(kids.front(), &status, 0);
     
     // // kiling spree
-    // kill(0, SIGTERM);
     for (pid_t k : kids) {
         kill(k, SIGTERM);
-        // std::cerr << "mom  " << k << std::endl;
         waitpid(k, &status, 0);
     }
     
