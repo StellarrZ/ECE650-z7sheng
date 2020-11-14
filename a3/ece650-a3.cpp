@@ -14,7 +14,8 @@ int sfind(void) {
         std::getline(std::cin, line);
         if (line.size() > 0){
             usleep(500000);
-            std::cout << line << std::endl;
+            std::cout << "OH" << line << std::endl;
+            // std::cout << line << std::endl;
         }
     }
     return 0;
@@ -95,11 +96,11 @@ int main (int argc, char **argv) {
 
         // return sfind();
 
-        // std::cout << "V 0\nE {}" << std::endl;
-        // sleep(2);
-        // std::cout << "V 3\nE {<1,2>,<2,3>}" << std::endl;
-        // sleep(11);
-        // return 0;
+        std::cout << "V 0\nE {}" << std::endl;
+        sleep(2);
+        std::cout << "V 3\nE {<1,2>,<2,3>}" << std::endl;
+        sleep(11);
+        return 0;
 
         char *arga1[3];
         arga1[0] = (char *)"python3";
