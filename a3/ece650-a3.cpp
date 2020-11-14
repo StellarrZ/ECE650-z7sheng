@@ -44,7 +44,7 @@ int main (int argc, char **argv) {
         argrg[0] = (char *)"rgen";
         for (int i = 1; i < argc; i++)
             argrg[i] = argv[i];
-        argrg[i] = nullptr;
+        argrg[argc] = nullptr;
 
         execv("./rgen", argrg);
 
