@@ -197,6 +197,7 @@ int main(int argc, char **argv) {
                     cntry = 0;
                 }
                 else if (cntry >= limit) {
+                    std::cout << "}" << std::endl;
                     std::cerr << "Error: Failed to generate valid specification\n";
                     urandom.close();
                     return 0;
