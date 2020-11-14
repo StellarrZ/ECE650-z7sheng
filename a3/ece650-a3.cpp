@@ -87,9 +87,9 @@ int main (int argc, char **argv) {
         close(p1[0]);
         close(p1[1]);
 
-        dup2(p2[1], STDOUT_FILENO);
-        close(p2[0]);
-        close(p2[1]);
+        // dup2(p2[1], STDOUT_FILENO);
+        // close(p2[0]);
+        // close(p2[1]);
 
         return sfind();
 
