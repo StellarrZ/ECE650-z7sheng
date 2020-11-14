@@ -474,11 +474,14 @@ def main():
     dbase = {}
     while True:
         line = sys.stdin.readline()
-        if line == "\n" or line == '':
+        # if line == "\n" or line == '':
+        #     break
+        # if line.strip(" ") == "\n":
+        #     break
+        if line == '':
             break
-        if line.strip(" ") == "\n":
-            break
-        print(line)
+        elif line == "\n" or line.strip(" ") == "\n":
+            continue
         try:
             cmd, stname, chain = parseLine(line)
             execute(cmd, stname, chain)
