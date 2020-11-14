@@ -38,7 +38,7 @@ int main (int argc, char **argv) {
         // rgen
         dup2(p1[1], STDOUT_FILENO);
         close(p1[0]);
-        // close(p1[1]);
+        close(p1[1]);
 
         execv("./rgen", argrg);
 
@@ -62,7 +62,7 @@ int main (int argc, char **argv) {
         close(p1[1]);
 
         dup2(p2[0], STDIN_FILENO);
-        // close(p2[0]);
+        close(p2[0]);
         close(p2[1]);
 
         char *arga2[2];
@@ -84,11 +84,11 @@ int main (int argc, char **argv) {
     if (child == 0) {
         // ece650-a1
         dup2(p1[0], STDIN_FILENO);
-        // close(p1[0]);
+        close(p1[0]);
         close(p1[1]);
 
-        dup2(p2[1], STDOUT_FILENO);
-        close(p2[0]);
+        // dup2(p2[1], STDOUT_FILENO);
+        // close(p2[0]);
         // close(p2[1]);
 
         char *arga1[3];
@@ -119,7 +119,7 @@ int main (int argc, char **argv) {
         // get line from std input (s command)
         dup2(p2[1], STDOUT_FILENO);
         close(p2[0]);
-        // close(p2[1]);
+        close(p2[1]);
 
         int res = sfind();
 
