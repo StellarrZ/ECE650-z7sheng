@@ -87,9 +87,11 @@ int main (int argc, char **argv) {
         close(p1[0]);
         close(p1[1]);
 
-        dup2(p2[1], STDOUT_FILENO);
-        close(p2[0]);
-        close(p2[1]);
+        // dup2(p2[1], STDOUT_FILENO);
+        // close(p2[0]);
+        // close(p2[1]);
+
+        return sfind();
 
         // std::cout << "V 0\nE {}" << std::endl;
         // sleep(2);
@@ -97,11 +99,11 @@ int main (int argc, char **argv) {
         // sleep(11);
         // return 0;
 
-        char *arga1[3];
-        arga1[0] = (char *)"python3";
-        arga1[1] = (char *)"./ece650-a1.py";
-        arga1[2] = nullptr;
-        execv("/usr/bin/python3", arga1);
+        // char *arga1[3];
+        // arga1[0] = (char *)"python3";
+        // arga1[1] = (char *)"./ece650-a1.py";
+        // arga1[2] = nullptr;
+        // execv("/usr/bin/python3", arga1);
 
         std::cerr << "Error: Fail to execute ece650-a1" << std::endl;
         return 1;
