@@ -171,7 +171,7 @@ int main (int argc, char **argv) {
     for (pid_t k : kids) {
         kill(k, SIGTERM);
         // std::cerr << "mom  " << k << std::endl;
-        waitpid(k, &status, 0);
+        // waitpid(k, &status, 0);
     }
     
     return 0;
