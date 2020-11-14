@@ -12,6 +12,10 @@ class NODE(object):
     def __repr__ (self):
         return "(" + pprt(self.x) + "," + pprt(self.y) + ")"
     def handnum(self):
+        if abs(self.x) < 0.001:
+            self.x = 0.0
+        if abs(self.y) < 0.001:
+            self.y = 0.0         
         tem = hinit(self.x) + " " + hinit(self.y)
         tem = tem.replace(" ", "v")
         tem = tem.replace("-", "n")
