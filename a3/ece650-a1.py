@@ -478,6 +478,7 @@ def main():
             break
         if line.strip(" ") == "\n":
             break
+        print(line)
         try:
             cmd, stname, chain = parseLine(line)
             execute(cmd, stname, chain)
