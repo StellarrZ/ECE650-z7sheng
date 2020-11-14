@@ -42,7 +42,7 @@ int main (int argc, char **argv) {
 
         char **argrg = new char *[argc + 1];
         argrg[0] = (char *)"rgen";
-        for (unsigned i = 1; i < argc; i++)
+        for (unsigned i = 1; i < unsigned(argc); i++)
             argrg[i] = argv[i];
         argrg[argc] = nullptr;
 

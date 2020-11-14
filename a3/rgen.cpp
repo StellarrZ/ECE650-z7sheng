@@ -120,9 +120,6 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    // test para
-    std::cerr << sp << np << lp << cp << "\n";
-
     // open /dev/urandom to read
     std::ifstream urandom("/dev/urandom");
     if (urandom.fail()) {
