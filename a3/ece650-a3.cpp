@@ -40,7 +40,7 @@ int main (int argc, char **argv) {
         close(p1[0]);
         close(p1[1]);
 
-        argrg = new str *[argc + 1];
+        char **argrg = new char *[argc + 1];
         argrg[0] = (char *)"rgen";
         for (int i = 1; i < argc; i++)
             argrg[i] = argv[i];
