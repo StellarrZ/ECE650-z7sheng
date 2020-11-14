@@ -92,7 +92,9 @@ int main (int argc, char **argv) {
         close(p2[1]);
 
         std::cout << "V 0\nE {}" << std::endl;
-        sleep(10);
+        sleep(2);
+        std::cout << "V 3\nE {<1,2>,<2,3>}" << std::endl;
+        sleep(11);
         return 0;
 
         // char *arga1[3];
