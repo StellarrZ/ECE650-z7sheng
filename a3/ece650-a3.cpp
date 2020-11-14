@@ -65,6 +65,8 @@ int main (int argc, char **argv) {
         close(p2[0]);
         close(p2[1]);
 
+        return sfind();
+
         char *arga2[2];
         arga2[0] = (char *)"ece650-a2";
         arga2[1] = nullptr;
