@@ -56,7 +56,7 @@ bool tvalid(std::vector<int *> segs, const int mx, const int my,
                 if (mx == k[0]) {
                     base = std::min(k[1], k[3]);
                     top = std::max(k[1], k[3]);
-                    if (!((x <= base && mx <= base) || (x >= top && mx >= top)))
+                    if (!((y <= base && my <= base) || (y >= top && my >= top)))
                         return false;
                 }
             }
