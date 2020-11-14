@@ -27,10 +27,10 @@ int main (int argc, char **argv) {
     int p1[2];
     pipe(p1);
     
-    // arg here ##################
-    char *argrg[2];
-    argrg[0] = (char *)"rgen";
-    argrg[1] = nullptr;
+    // // arg here ##################
+    // char *argrg[2];
+    // argrg[0] = (char *)"rgen";
+    // argrg[1] = nullptr;
 
     pid_t child;
     child = fork();
@@ -39,6 +39,12 @@ int main (int argc, char **argv) {
         dup2(p1[1], STDOUT_FILENO);
         close(p1[0]);
         close(p1[1]);
+
+        argrg = new str *[argc + 1];
+        argrg[0] = (char *)"rgen";
+        for (int i = 1; i < argc; i++)
+            argrg[i] = argv[i];
+        argrg[i] = nullptr;
 
         execv("./rgen", argrg);
 
