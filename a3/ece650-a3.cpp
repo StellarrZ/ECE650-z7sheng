@@ -14,8 +14,7 @@ int sfind(void) {
         std::getline(std::cin, line);
         if (line.size() > 0){
             usleep(500000);
-            std::cout << "OH " << line << std::endl;
-            // std::cout << line << std::endl;
+            std::cout << line << std::endl;
         }
     }
     return 0;
@@ -66,7 +65,7 @@ int main (int argc, char **argv) {
         close(p2[0]);
         close(p2[1]);
 
-        return sfind();
+        // return sfind();
 
         char *arga2[2];
         arga2[0] = (char *)"ece650-a2";
