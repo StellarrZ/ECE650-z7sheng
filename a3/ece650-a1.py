@@ -243,6 +243,9 @@ def insrtN(n1, n2, stainflag):
 
 
 def judgeInsrt(pa, pb, pc, pd):
+    if pa.handnum() == pb.handnum() or pc.handnum() == pd.handnum():
+        return False
+
     lab = list( Vector(pa, pb) )
     lcd = list( Vector(pc, pd) )
     lac = list( Vector(pa, pc) )
@@ -424,7 +427,7 @@ def outVE():
             if ver.starflag or agent[travel][i + 1].starflag:
                 nn1 = nickname[ver.handnum()]
                 nn2 = nickname[agent[travel][i + 1].handnum()]
-                if (nn1, nn2) not in se and (nn2, nn1) not in se:
+                if (nn1, nn2) not in se and (nn2, nn1) not in se and nn1 != nn2:
                     se.add((nn1, nn2))
                     oeline += "<" + str(nn1) + "," + str(nn2) + ">,"
     oeline = oeline.rstrip(",")
