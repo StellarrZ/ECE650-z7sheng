@@ -485,6 +485,7 @@ def main():
         elif line == "\n" or line.strip(" ") == "\n":
             continue
         try:
+            print(line, file = sys.stderr)
             cmd, stname, chain = parseLine(line)
             execute(cmd, stname, chain)
         except Exception as ex:
