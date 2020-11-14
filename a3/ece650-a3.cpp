@@ -13,7 +13,7 @@ int sfind(void) {
         std::string line;
         std::getline(std::cin, line);
         if (line.size() > 0){
-            usleep(500000);
+            usleep(360000);
             std::cout << line << std::endl;
         }
     }
@@ -42,7 +42,7 @@ int main (int argc, char **argv) {
 
         char **argrg = new char *[argc + 1];
         argrg[0] = (char *)"rgen";
-        for (int i = 1; i < argc; i++)
+        for (unsigned i = 1; i < argc; i++)
             argrg[i] = argv[i];
         argrg[argc] = nullptr;
 
