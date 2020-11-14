@@ -65,12 +65,12 @@ int main (int argc, char **argv) {
         close(p2[0]);
         close(p2[1]);
 
-        return sfind();
+        // return sfind();
 
-        // char *arga2[2];
-        // arga2[0] = (char *)"ece650-a2";
-        // arga2[1] = nullptr;
-        // execv("./ece650-a2", arga2);
+        char *arga2[2];
+        arga2[0] = (char *)"ece650-a2";
+        arga2[1] = nullptr;
+        execv("./ece650-a2", arga2);
 
         std::cerr << "Error: Fail to execute ece650-a2" << std::endl;
         return 1;
