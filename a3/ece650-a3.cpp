@@ -65,8 +65,6 @@ int main (int argc, char **argv) {
         close(p2[0]);
         close(p2[1]);
 
-        // return sfind();
-
         char *arga2[2];
         arga2[0] = (char *)"ece650-a2";
         arga2[1] = nullptr;
@@ -93,17 +91,17 @@ int main (int argc, char **argv) {
         close(p2[0]);
         close(p2[1]);
 
-        std::cout << "V 0\nE {}" << std::endl;
-        sleep(2);
-        std::cout << "V 3\nE {<1,2>,<2,3>}" << std::endl;
-        sleep(11);
-        return 0;
+        // std::cout << "V 0\nE {}" << std::endl;
+        // sleep(2);
+        // std::cout << "V 3\nE {<1,2>,<2,3>}" << std::endl;
+        // sleep(11);
+        // return 0;
 
-        // char *arga1[3];
-        // arga1[0] = (char *)"python3";
-        // arga1[1] = (char *)"./ece650-a1.py";
-        // arga1[2] = nullptr;
-        // execv("/usr/bin/python3", arga1);
+        char *arga1[3];
+        arga1[0] = (char *)"python3";
+        arga1[1] = (char *)"./ece650-a1.py";
+        arga1[2] = nullptr;
+        execv("/usr/bin/python3", arga1);
 
         std::cerr << "Error: Fail to execute ece650-a1" << std::endl;
         return 1;

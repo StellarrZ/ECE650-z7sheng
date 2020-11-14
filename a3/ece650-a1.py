@@ -414,7 +414,7 @@ def outVE():
                 cnt += 1
                 nickname[ver.handnum()] = cnt
 
-    print("V " + str(cnt))
+    print("V " + str(cnt), file = sys.stdout)
 
     se = set()
     oeline = ""
@@ -428,7 +428,7 @@ def outVE():
                     oeline += "<" + str(nn1) + "," + str(nn2) + ">,"
     oeline = oeline.rstrip(",")
 
-    print("E {" + oeline + "}")
+    print("E {" + oeline + "}", file = sys.stdout)
     return
     
 
