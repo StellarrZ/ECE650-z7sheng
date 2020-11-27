@@ -1,6 +1,6 @@
 #include "a4.hpp"
 
-#include <sstream>
+#include <iostream>
 #include <vector>
 // defined std::unique_ptr
 #include <memory>
