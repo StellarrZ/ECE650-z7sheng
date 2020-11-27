@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     unsigned i, j = 0;
 
     unsigned v = 0;
-    bool **matrix;
+    bool **matrix = nullptr;
 
     // read from stdin until EOF
     while (!std::cin.eof()) {
@@ -97,8 +97,11 @@ int main(int argc, char** argv) {
                 std::cout << std::endl;
             }
             // min vertex cover
-            else if (minvc(matrix, v) != 0) {
-                std::cerr << "Error: Failed to execute minvc()\n";
+            else {
+                auto res = minvc(matrix, v);
+                if (res != 0) {
+                    std::cerr << "Error: Failed to execute minvc(), res = " << res << std::endl;
+                }
             }
         }
         else {
