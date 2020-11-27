@@ -98,6 +98,8 @@ int minvc(bool **matrix, unsigned v) {
                     }
                 }
             }
+            // abnormal
+            return 2;
         }
         else {
             lv.clear();

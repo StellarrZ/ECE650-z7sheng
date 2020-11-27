@@ -23,8 +23,9 @@ int main(int argc, char** argv) {
         std::getline(std::cin, line);
 
         // if nothing was read, go to top of the while to check for eof
-        if (line.empty())
+        if (line.empty()) {
             continue;
+        }
 
         // create an input stream based on the line
         // we will use the input stream to parse the line
@@ -32,8 +33,9 @@ int main(int argc, char** argv) {
         
         // ignore empty lines
         std::ws(input);
-        if (input.eof())
+        if (input.eof()) {
             continue;
+        }
 
         char ch;
         input >> ch;
@@ -54,11 +56,14 @@ int main(int argc, char** argv) {
             // we simply suppose that v cannot be too large
             else {
                 matrix = new bool *[v];
-                for (j = 0; j < v; j++)
+                for (j = 0; j < v; j++) {
                     matrix[j] = new bool[v];
-                for (i = 0; i < v; i++)
-                    for (j = 0; j < v; j++) 
+                }
+                for (i = 0; i < v; i++) {
+                    for (j = 0; j < v; j++) {
                         matrix[i][j] = false;
+                    }
+                }
             }
         }
         // input_line: E {<stem,dtem>,<>}

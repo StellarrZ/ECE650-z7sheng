@@ -7,5 +7,6 @@
  * Output a valid minimal Vertex Cover of the given graph.
  * Returns 0 if output successfully.
  * Returns 1 if unexpected happened.
+ * Returns 2 if unexpected happened.
  */
 int minvc(bool **matrix, unsigned v);
